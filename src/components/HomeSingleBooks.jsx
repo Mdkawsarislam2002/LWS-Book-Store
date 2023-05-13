@@ -1,9 +1,14 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
+import { useDeleteBookMutation } from "../Redux/feature/apiSlice";
 
 const HomeSingleBooks = ({ data }) => {
   const { name, author, thumbnail, price, rating, featured, id } = data;
+  const [deleteBook] = useDeleteBookMutation();
 
+  const deleteHandler = () => {
+    deleteBook(id);
+  };
   return (
     <div>
       <div className="book-card">
@@ -32,7 +37,7 @@ const HomeSingleBooks = ({ data }) => {
                   />
                 </svg>
               </Link>
-              <button className="lws-deleteBook">
+              <button className="lws-deleteBook" onClick={deleteHandler}>
                 <svg
                   fill="none"
                   viewBox="0 0 24 24"
