@@ -7,7 +7,7 @@ import { useState } from "react";
 
 const EditBooks = () => {
   const { id } = useParams();
-  const { data } = useGetSingleBooksQuery(id);
+  const { data, isLoading } = useGetSingleBooksQuery(id);
   const [updateBook, { isSuccess }] = useUpdateBookMutation();
 
   const [newName, setNewName] = useState(data?.name);
@@ -64,6 +64,14 @@ const EditBooks = () => {
         <div className="container">
           <div className="p-8 overflow-hidden bg-white shadow-cardShadow rounded-md max-w-xl mx-auto">
             <h4 className="mb-8 text-xl font-bold text-center">Add New Book</h4>
+
+            {isLoading && (
+              <div className="flex justify-center items-center">
+                {" "}
+                getting Data Of {id}{" "}
+              </div>
+            )}
+
             <form className="book-form" onSubmit={formHandler}>
               <div className="space-y-2">
                 <label htmlFor="lws-bookName">Book Name</label>

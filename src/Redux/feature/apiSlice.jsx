@@ -5,14 +5,16 @@ const apiSlice = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: "http://localhost:9000/",
   }),
-
+  tagTypes: ["Books", "singleBook"],
   endpoints: (builder) => ({
     getBooks: builder.query({
       query: () => "books",
       keepUnusedDataFor: 600,
+      providesTags: ["Books"],
     }),
     getSingleBooks: builder.query({
       query: (id) => `books/${id}`,
+      providesTags: (result, error, id) => [{ type: "singleBook", id }],
     }),
     updateBook: builder.mutation({
       query: ({ id, data }) => ({
@@ -20,6 +22,10 @@ const apiSlice = createApi({
         method: "PATCH",
         body: data,
       }),
+      invalidatesTags: (result, error, { id }) => [
+        ["Books"],
+        { type: "singleBook", id },
+      ],
     }),
 
     deleteBook: builder.mutation({
@@ -27,6 +33,10 @@ const apiSlice = createApi({
         url: `books/${id}`,
         method: "DELETE",
       }),
+      invalidatesTags: (result, error, { id }) => [
+        ["Books"],
+        { type: "singleBook", id },
+      ],
     }),
 
     addBook: builder.mutation({
@@ -35,6 +45,7 @@ const apiSlice = createApi({
         method: "POST",
         body: data,
       }),
+      invalidatesTags: ["Books"],
     }),
   }),
 });
