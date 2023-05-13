@@ -9,11 +9,7 @@ const GlobalNav = () => {
           <img src={logo} width="150px" className="object-contain" />
 
           <ul className="hidden md:flex items-center space-x-6">
-            <NavLink
-              to={"/"}
-              className="font-semibold cursor-pointer"
-              id="lws-bookStore"
-            >
+            <NavLink to={"/"} className=" cursor-pointer" id="lws-bookStore">
               <li>Book Store</li>
             </NavLink>
             <NavLink to={"/add"} className="cursor-pointer" id="lws-addBook">

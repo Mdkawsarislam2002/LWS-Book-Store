@@ -1,6 +1,9 @@
+import { useGetBooksQuery } from "../Redux/feature/apiSlice";
 import HomeSingleBooks from "../components/HomeSingleBooks";
 
 const Home = () => {
+  const { data: books, isSuccess } = useGetBooksQuery();
+
   return (
     <div>
       <main className="py-12 px-6 2xl:px-6 container">
@@ -14,7 +17,10 @@ const Home = () => {
             </div>
           </div>
           <div className="space-y-6 md:space-y-0 md:grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <HomeSingleBooks />
+            {isSuccess &&
+              books.map((book) => (
+                <HomeSingleBooks key={book.id} data={book} />
+              ))}
           </div>
         </div>
       </main>
