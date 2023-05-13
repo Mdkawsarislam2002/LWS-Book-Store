@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 const HomeSingleBooks = ({ data }) => {
   const { name, author, thumbnail, price, rating, featured, id } = data;
-  console.log(rating);
 
   return (
     <div>

@@ -20,11 +20,11 @@ const App = () => {
         },
         {
           path: "/add",
-          element: <EditBooks />,
+          element: <AddBooks />,
         },
         {
           path: "/edit/:id",
-          element: <AddBooks />,
+          element: <EditBooks />,
         },
       ],
     },

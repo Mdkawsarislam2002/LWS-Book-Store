@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/logo.svg";
 
 const GlobalNav = () => {
@@ -6,7 +6,9 @@ const GlobalNav = () => {
     <>
       <nav className="py-4 2xl:px-6">
         <div className="container flex items-center justify-between">
-          <img src={logo} width="150px" className="object-contain" />
+          <Link to={"/"}>
+            <img src={logo} width="150px" className="object-contain" />
+          </Link>
 
           <ul className="hidden md:flex items-center space-x-6">
             <NavLink to={"/"} className=" cursor-pointer" id="lws-bookStore">

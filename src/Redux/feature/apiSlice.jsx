@@ -11,7 +11,21 @@ const apiSlice = createApi({
       query: () => "books",
       keepUnusedDataFor: 600,
     }),
+    getSingleBooks: builder.query({
+      query: (id) => `books/${id}`,
+    }),
+    updateBook: builder.mutation({
+      query: ({ id, data }) => ({
+        url: `books/${id}`,
+        method: "PATCH",
+        body: data,
+      }),
+    }),
   }),
 });
 export default apiSlice;
-export const { useGetBooksQuery } = apiSlice;
+export const {
+  useGetBooksQuery,
+  useGetSingleBooksQuery,
+  useUpdateBookMutation,
+} = apiSlice;
