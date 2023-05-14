@@ -1,7 +1,12 @@
+import { setSearchValue } from "../Redux/filterSlice/filterSlice";
+import { useDispatch } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
+
 import logo from "../assets/logo.svg";
 
 const GlobalNav = () => {
+  const dispatch = useDispatch();
+
   return (
     <>
       <nav className="py-4 2xl:px-6">
@@ -19,7 +24,12 @@ const GlobalNav = () => {
             </NavLink>
           </ul>
 
-          <form className="flex items-center">
+          <form
+            className="flex items-center"
+            onSubmit={(e) => {
+              e.preventDefault();
+            }}
+          >
             <div className="group relative rounded-md bg-white">
               <svg
                 width="20"
@@ -38,6 +48,7 @@ const GlobalNav = () => {
                 placeholder="Filter books..."
                 className="search"
                 id="lws-search"
+                onChange={(e) => dispatch(setSearchValue(e.target.value))}
               />
             </div>
           </form>

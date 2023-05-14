@@ -1,21 +1,33 @@
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+
+//  RTK
 import {
   useGetSingleBooksQuery,
   useUpdateBookMutation,
-} from "../Redux/feature/apiSlice";
-import { useState } from "react";
+} from "../Redux/feature/apiSlice/apiSlice";
 
 const EditBooks = () => {
   const { id } = useParams();
+
   const { data, isLoading } = useGetSingleBooksQuery(id);
   const [updateBook, { isSuccess }] = useUpdateBookMutation();
 
-  const [newName, setNewName] = useState(data?.name);
-  const [newAuthor, setNewAuthor] = useState(data?.author);
-  const [newThumbnail, setNewThumbnail] = useState(data?.thumbnail);
-  const [newPrice, setNewPrice] = useState(data?.price);
-  const [newRating, setNewRating] = useState(data?.rating);
-  const [newFeatured, setNewFeatured] = useState(data?.featured);
+  const [newName, setNewName] = useState("");
+  const [newAuthor, setNewAuthor] = useState("");
+  const [newThumbnail, setNewThumbnail] = useState("");
+  const [newPrice, setNewPrice] = useState("");
+  const [newRating, setNewRating] = useState("");
+  const [newFeatured, setNewFeatured] = useState(false);
+
+  useEffect(() => {
+    setNewName(data?.name);
+    setNewAuthor(data?.author);
+    setNewThumbnail(data?.thumbnail);
+    setNewPrice(data?.price);
+    setNewRating(data?.rating);
+    setNewFeatured(data?.featured);
+  }, [data]);
 
   const fontDataHandler = (value, type) => {
     switch (type) {

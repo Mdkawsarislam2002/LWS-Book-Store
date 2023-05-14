@@ -8,8 +8,15 @@ const apiSlice = createApi({
   tagTypes: ["Books", "singleBook"],
   endpoints: (builder) => ({
     getBooks: builder.query({
-      query: () => "books",
-      keepUnusedDataFor: 600,
+      query: ({ filter, searchQuery }) => {
+        let checkFeature = filter === "featured";
+        if (checkFeature) {
+          return `books?featured=${checkFeature}&name_like=${searchQuery}`;
+        } else {
+          return `books?name_like=${searchQuery}`;
+        }
+      },
+      keepUnusedDataFor: 500,
       providesTags: ["Books"],
     }),
     getSingleBooks: builder.query({

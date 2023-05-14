@@ -35,6 +35,33 @@
       "rating": "5",
       "featured": true,
       "id": 5
+    },
+    {
+      "name": "হাতে কলমে জাভাস্ক্রিপ্ট",
+      "author": "জুনায়েদ আহমেদ ",
+      "thumbnail": "https://th.bing.com/th/id/R.74b6f0867ad30a5d7e1827a8cac071ef?rik=3x7tgKWdNhVPkQ&pid=ImgRaw&r=0",
+      "price": "200",
+      "rating": "5",
+      "featured": true,
+      "id": 6
+    },
+    {
+      "name": "Managementul Marketingului ",
+      "author": "Philip Kotler ",
+      "thumbnail": "https://th.bing.com/th/id/R.517d219cd81ac0ba11f531ed48f6325c?rik=MLjpWAXwo1JFrA&pid=ImgRaw&r=0",
+      "price": "500",
+      "rating": "4",
+      "featured": false,
+      "id": 7
+    },
+    {
+      "name": "Rework",
+      "author": "manyChat",
+      "thumbnail": "https://th.bing.com/th/id/R.a09f594c2d46510af8421ede787e8b34?rik=MW52IXfCtbQTdg&pid=ImgRaw&r=0",
+      "price": "800",
+      "rating": "4",
+      "featured": false,
+      "id": 8
     }
   ]
 }

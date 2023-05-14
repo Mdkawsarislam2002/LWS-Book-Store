@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
-import { useDeleteBookMutation } from "../Redux/feature/apiSlice";
+import { useDeleteBookMutation } from "../Redux/feature/apiSlice/apiSlice";
 
 const HomeSingleBooks = ({ data }) => {
   const { name, author, thumbnail, price, rating, featured, id } = data;
@@ -59,7 +59,7 @@ const HomeSingleBooks = ({ data }) => {
             <h4 className="lws-book-name">{name}</h4>
             <p className="lws-author">{author}</p>
             <div className="lws-stars">
-              {Array(rating).map((value, index) => (
+              {new Array(rating.toString()).map((value, index) => (
                 <svg
                   key={index}
                   viewBox="0 0 20 20"
